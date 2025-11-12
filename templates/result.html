@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .recommendations-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: "💡";
+            font-size: 1.3rem;
+        }
+
+        .recommendations-box {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .recommendations-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            white-space: pre-line;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #f5c6cb;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎯</div>
+            <h1>Personalized Recommendations</h1>
+            <p class="subtitle">Your CV analysis is complete</p>
+        </div>
+
+        <div class="content">
+            {% if recommendations %}
+                {% if "API Error" in recommendations %}
+                    <div class="error-message">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">⚠️</div>
+                        <h3>Processing Error</h3>
+                        <p>{{ recommendations }}</p>
+                        <p style="margin-top: 15px; font-size: 0.9rem;">
+                            Please try again or contact support if the problem persists.
+                        </p>
+                    </div>
+                {% else %}
+                    <div class="recommendations-section">
+                        <h2 class="section-title">Career Recommendations</h2>
+                        <div class="recommendations-box">
+                            <div class="recommendations-text">
+                                {{ recommendations }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="success-message" style="text-align: center; margin: 30px 0;">
+                        <div class="success-icon">✅</div>
+                        <h3 style="color: #28a745; margin-bottom: 10px;">Analysis Completed Successfully</h3>
+                        <p style="color: #666;">These recommendations are based on your unique profile</p>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="error-message">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">❌</div>
+                    <h3>No Recommendations Available</h3>
+                    <p>Unable to generate recommendations for your CV.</p>
+                </div>
+            {% endif %}
+
+            <div class="actions">
+                <a href="{{ url_for('analyse') }}" class="btn btn-primary">
+                    📄 Analyze Another CV
+                </a>
+                <button onclick="window.print()" class="btn btn-secondary">
+                    🖨️ Print Results
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation d'apparition
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.recommendations-box, .success-message');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.6s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Copier les résultats
+        function copyResults() {
+            const text = document.querySelector('.recommendations-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Recommendations copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

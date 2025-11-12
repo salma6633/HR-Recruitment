@@ -1,0 +1,189 @@
+[
+  {
+    "id": "1",
+    "user_id": "2",
+    "user_name": "eya",
+    "job_id": "job_1",
+    "job_title": "ADMIN BIG DATA",
+    "cv_path": "uploads\\cvs\\2_job_1_Akhil.profile.docx",
+    "cv_score": 87.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T02:07:33.784045"
+  },
+  {
+    "id": "2",
+    "user_id": "2",
+    "user_name": "eya",
+    "job_id": "job_2",
+    "job_title": "AGILE PROJECT MANAGER",
+    "cv_path": "uploads\\cvs\\2_job_2_Amrinder_Business_Analyst.docx",
+    "cv_score": 85.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T02:14:05.879016"
+  },
+  {
+    "id": "3",
+    "user_id": "2",
+    "user_name": "eya",
+    "job_id": "job_0",
+    "job_title": "ACCESSIBILITY SPECIALIST",
+    "cv_path": "uploads\\cvs\\2_job_0_Akhil_Sr_BSA.docx",
+    "cv_score": 75.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T02:27:54.455815"
+  },
+  {
+    "id": "4",
+    "user_id": "2",
+    "user_name": "eya",
+    "job_id": "job_3",
+    "job_title": "ANDROID DEVELOPER",
+    "cv_path": "uploads\\cvs\\2_job_3_Akhil.profile.docx",
+    "cv_score": 87.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T02:32:44.858146"
+  },
+  {
+    "id": "5",
+    "user_id": "2",
+    "user_name": "eya",
+    "job_id": "job_5",
+    "job_title": "APPLICATION SECURITY ENGINEER",
+    "cv_path": "uploads\\cvs\\2_job_5_Akhil.profile.docx",
+    "cv_score": 87.0,
+    "quiz_score": 75.0,
+    "applied_at": "2025-11-05T02:37:51.785028"
+  },
+  {
+    "id": "6",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_1",
+    "job_title": "ADMIN BIG DATA",
+    "cv_path": "uploads\\cvs\\3_job_1_Alekhya_Resume.docx",
+    "cv_score": 83.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T04:39:31.479718"
+  },
+  {
+    "id": "7",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_2",
+    "job_title": "AGILE PROJECT MANAGER",
+    "cv_path": "uploads\\cvs\\3_job_2_AjayKumar.docx",
+    "cv_score": 87.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T09:56:24.398660"
+  },
+  {
+    "id": "8",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_0",
+    "job_title": "ACCESSIBILITY SPECIALIST",
+    "cv_path": "uploads\\cvs\\3_job_0_Alekhya_Resume.docx",
+    "cv_score": 56.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-05T10:46:40.882345"
+  },
+  {
+    "id": "9",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_3",
+    "job_title": "ANDROID DEVELOPER",
+    "cv_path": "uploads\\cvs\\3_job_3_Achyuth_Resume_8.docx",
+    "cv_score": 85.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-05T11:00:56.979229"
+  },
+  {
+    "id": "10",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_4",
+    "job_title": "ANSIBLE AUTOMATION ENGINEER",
+    "cv_path": "uploads\\cvs\\3_job_4_AjayKumar.docx",
+    "cv_score": 85.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-07T00:35:00.736245"
+  },
+  {
+    "id": "11",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_5",
+    "job_title": "APPLICATION SECURITY ENGINEER",
+    "cv_path": "uploads\\cvs\\3_job_5_AjayKumar.docx",
+    "cv_score": 85.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-07T00:47:11.842929"
+  },
+  {
+    "id": "12",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "1762563435",
+    "job_title": "Designer",
+    "cv_path": "uploads\\cvs\\3_1762563435_Jagan_S_Iyer_PM.docx",
+    "cv_score": 75.0,
+    "quiz_score": 0.0,
+    "applied_at": "2025-11-08T02:02:17.833254"
+  },
+  {
+    "id": "13",
+    "user_id": "3",
+    "user_name": "eya",
+    "job_id": "job_6",
+    "job_title": "ARTIFACTORY ADMINISTRATOR",
+    "cv_path": "uploads\\cvs\\3_job_6_Alekhya_Resume.docx",
+    "cv_score": 75.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-08T02:32:42.800921"
+  },
+  {
+    "id": "14",
+    "user_id": "5",
+    "user_name": "salma labidi",
+    "job_id": "job_0",
+    "job_title": "ACCESSIBILITY SPECIALIST",
+    "cv_path": "uploads\\cvs\\5_job_0_CV-Eya_1.pdf",
+    "cv_score": 83.0,
+    "quiz_score": 50.0,
+    "applied_at": "2025-11-11T17:21:30.916525"
+  },
+  {
+    "id": "15",
+    "user_id": "5",
+    "user_name": "salma labidi",
+    "job_id": "job_1",
+    "job_title": "ADMIN BIG DATA",
+    "cv_path": "uploads\\cvs\\5_job_1_CV-Eya_1.pdf",
+    "cv_score": 87.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-11T17:26:40.356086"
+  },
+  {
+    "id": "16",
+    "user_id": "6",
+    "user_name": "Lynda Mtiri",
+    "job_id": "job_0",
+    "job_title": "ACCESSIBILITY SPECIALIST",
+    "cv_path": "uploads\\cvs\\6_job_0_Amulya_Komatineni.docx",
+    "cv_score": 79.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-11T19:22:06.440854"
+  },
+  {
+    "id": "17",
+    "user_id": "7",
+    "user_name": "Dhia",
+    "job_id": "job_1",
+    "job_title": "ADMIN BIG DATA",
+    "cv_path": "uploads\\cvs\\7_job_1_Alekhya_Resume.docx",
+    "cv_score": 89.0,
+    "quiz_score": 25.0,
+    "applied_at": "2025-11-11T21:24:03.908870"
+  }
+]

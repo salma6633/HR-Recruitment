@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "title": "datascientist",
+    "description": "lorem lorem lorem",
+    "skills": "python, sql, r",
+    "created_by": "2",
+    "created_at": "2025-11-05T04:24:00.409536"
+  },
+  {
+    "id": "2",
+    "title": "developer",
+    "description": "hello",
+    "skills": "html css js",
+    "created_by": "2",
+    "created_at": "2025-11-05T10:51:06.072289"
+  }
+]

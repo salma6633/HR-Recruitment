@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "name": "Admin RH",
+    "email": "admin@rh.com",
+    "password": "scrypt:32768:8:1$bo614C6KQyeg4NkP$247d979790680470e549852643b8e3c838c141e5a04df0d08648f2bdf948db68f8631e963cb2322c665100960a43cd3372ac9ac5172be3469dc03137022189cb",
+    "role": "rh"
+  },
+  {
+    "id": "2",
+    "name": "rh",
+    "email": "rh@test.com",
+    "password": "scrypt:32768:8:1$hGdz2fimsrvzrP5H$5ea40cfa0c5f34c1fe53cc776c258350639dc28ad434c29f740cd9d22bb270283752b82a300d190cf42d06c7690566886cf2eb58e5bd09f89a02dd70711b8aa3",
+    "role": "rh"
+  },
+  {
+    "id": "3",
+    "name": "eya",
+    "email": "eya@test.com",
+    "password": "scrypt:32768:8:1$H7daXzGo0JgDoGan$3c0a2ace2e200130c59c69fbd41a57621a3588ccf947ca0483fb513ab37c536ac28368ebbe148a5d6bf67494ab3ec2b1bf277859991138bb77c77f0a92f1be36",
+    "role": "candidat"
+  },
+  {
+    "id": "4",
+    "name": "salma labidi",
+    "email": "salma@test.com",
+    "password": "scrypt:32768:8:1$vDboYaxEYsKr6p4W$09773e409c248fabd54bbda8f7e8532a22f86e82ea8ab95ae4b77ce3a4bf7fbc4295e500ff83a5d57346c68585c1ccebd7c87ccdf1a777b3a32317046db6f0a9",
+    "role": "candidat"
+  },
+  {
+    "id": "5",
+    "name": "salma labidi",
+    "email": "salma@gmail.com",
+    "password": "scrypt:32768:8:1$wBENiHIzEXlGBnZU$9663ab4ae5336313b9b4dda7514ca05e19c02bc0a4ddb544b682952d1ea06f50631b3d55f8fabff5d1ba71f8b98ec8807c912dd562afcf0d3d967a3a703c2fa9",
+    "role": "candidat"
+  },
+  {
+    "id": "6",
+    "name": "Lynda Mtiri",
+    "email": "Lynda@gmail.com",
+    "password": "scrypt:32768:8:1$qcTROs2Q2xicBMOx$fa5f76bfc59d443fd3817f7d7a8d8e52c13f77169c8661d89dd801789c024c004e8479bee74846d500b0fa14dafccbdead7c375513ceb9b941cc60fecbcaa286",
+    "role": "candidat"
+  },
+  {
+    "id": "7",
+    "name": "Dhia",
+    "email": "Dhia@gmail.com",
+    "password": "scrypt:32768:8:1$Gk7Y5j26Pl2n0Bj7$1421c4a393a47cc352b9847d82105da18bee13b37d33b0a7e4c56593dc1922f8f1c4db4438d419969a06eb09e7807f993db7c5be3349d6e838a37f81ee150e4b",
+    "role": "candidat"
+  }
+]

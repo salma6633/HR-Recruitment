@@ -1,0 +1,474 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Biden - Job Board HTML5 Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+        <!-- Place favicon.png in the root directory -->
+
+		<!-- CSS here -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+
+        <style>
+            /* Styles pour la liste déroulante de rôle */
+            .role-select-wrapper {
+                position: relative;
+                margin-bottom: 20px;
+            }
+            
+            .role-select-wrapper i {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #888;
+                pointer-events: none;
+                z-index: 1;
+            }
+            
+            .role-select {
+                width: 100%;
+                padding: 12px 15px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 14px;
+                background-color: white;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                position: relative;
+                z-index: 2;
+            }
+            
+            .role-select:focus {
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                outline: none;
+            }
+            
+            /* Styles pour les messages flash */
+            .flash-messages {
+                max-width: 500px;
+                width: 100%;
+                margin: 0 auto 20px;
+            }
+            
+            .alert {
+                padding: 12px 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .alert-success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            
+            .alert-error {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+            
+            .alert-warning {
+                background: #fff3cd;
+                color: #856404;
+                border: 1px solid #ffeaa7;
+            }
+            
+            .alert-info {
+                background: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- preloader -->
+        <div id="preloader">
+            <div class="preloader">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- preloader end  -->
+        <!-- header-start -->
+		<header class="header-transparent">
+            <div id="sticky-header" class="main-menu-area menu-01 header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="logo">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/Image2.png') }}" alt="" /></a>
+                            </div>
+                            <div class="logo-black">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/image-2-black.png') }}" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-6 col-sm-6 col-6">
+                            <div class="header-right d-flex justify-content-end justify-content-lg-between align-items-center">
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li><a href="{{ url_for('index') }}">Accueil</a></li>
+                                            <li class="active"><a href="{{ url_for('login') }}">Connexion</a></li>
+                                            <li><a href="{{ url_for('register') }}">Inscription</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-btn d-none d-lg-block">
+                                    <div class="hedder-button">
+                                        <a class="h-btn d-lg-none d-xl-inline-block" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Sin Up</a>
+                                        <a class="h-btn h-btn-green" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Log In</a>
+                                    </div>
+                                </div>
+                                <div class="sidebar__menu d-lg-none">
+                                    <div class="sidebar-toggle-btn" id="sidebar-toggle">
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header-start -->
+
+        <!-- sidebar area start -->
+        <section class="sidebar__area">
+            <div class="sidebar__shape" data-background="{{ url_for('static', filename='assets/img/shape/hexa.png') }}"></div>
+            <div class="sidebar__wrapper">
+                <div class="sidebar__close">
+                    <button class="sidebar__close-btn" id="sidebar__close-btn">
+                        <span><i class="fal fa-times"></i></span>
+                        <span>close</span>
+                    </button>
+                </div>
+                <div class="sidebar__content">
+                    <div class="logo mb-40">
+                        <a href="{{ url_for('index') }}">
+                            <img src="{{ url_for('static', filename='assets/img/logo/logo-white.png') }}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="mobile-menu d-block"></div>
+                    <div class="hedder-button mt-30">
+                        <a class="h-btn h-btn-2 mb-15" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Log In</a>
+                        <a class="h-btn h-btn-green h-btn-white" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="body-overlay"></div>
+        <!-- sidebar area end -->
+
+        <main>
+
+            <!-- page title area start -->
+            <section class="page__title page__title-height d-flex align-items-center" data-background="{{ url_for('static', filename='assets/img/page-title/page-title-1.jpg') }}">
+                <div class="hero-shape">
+                    <span class="circle"></span>
+                    <span class="circle circle-yellow"></span>
+                    <span class="shape-plus shape-plus-green">+</span>
+                    <span class="shape-plus shape-plus-green shape-plus-2">+</span>
+                    <span class="dot-shape">
+                        <img src="{{ url_for('static', filename='assets/img/shape/dot-shape.png') }}" alt="dot-shape">
+                    </span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="page__title-content text-center mt-80">
+                                <h2>CONNEXION</h2>
+                                  <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                      <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Accueil</a></li>
+                                      <li class="breadcrumb-item active" aria-current="page">CONNEXION</li>
+                                    </ol>
+                                  </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page title area end -->
+
+            <!-- login area start -->
+            <section class="login-area pt-80 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                            <div class="section-title text-center ml-50 mr-50 mb-20">
+                                <h2>Log In</h2>
+                                <p>Create your account to access all features</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="flash-messages">
+                                        {% for category, message in messages %}
+                                            <div class="alert alert-{{ category }}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <style>
+    
+    .role-select{
+        margin-bottom: 20px;
+    }
+</style>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="signin-popup-box d-flex justify-content-center">
+                                <div class="login-form">
+                                    <form method="POST" action="{{ url_for('login') }}">
+                                        <!-- Sélecteur de rôle corrigé -->
+                                        <div class="role-select-wrapper">
+                                            <select name="role" id="role" class="role-select" required>
+                                                <option value="">Select your role</option>
+                                                <option value="rh">Recruiter (RH)</option>
+                                                <option value="candidat">Candidat</option>
+                                            </select>
+                                            <i class="far fa-chevron-down"></i>
+                                        </div>
+                                        
+                                        <div class="input-text">
+                                            <input type="email" name="email" id="email" placeholder="Votre email" required>
+                                            <i class="far fa-envelope"></i>
+                                        </div>
+                                        <div class="input-text input-pass">
+                                            <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
+                                            <i class="far fa-lock"></i>
+                                        </div>
+                                        <p class="remember-label">
+                                            <input type="checkbox" id="remember" name="remember"> 
+                                            <label for="remember">Remember me</label>
+                                        </p>
+                                        <a href="#" title="">Forgot password ?</a>
+                                        <button type="submit">Log in</button>
+                                    </form>
+                                    <div class="extra-login">
+                                        <span>Ou</span>
+                                        <div class="login-social">
+                                            <a class="fb-login" href="#" title=""><i class="fab fa-facebook-f"></i></a>
+                                            <a class="tw-login" href="#" title=""><i class="fab fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="register-link text-center mt-4">
+                                        <p>Don’t have an account ? <a href="{{ url_for('register') }}"> Create an account</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- login area end -->
+        </main>
+
+        <!-- footer area start -->
+        <footer>
+            <div class="footer__area">
+                <div class="footer__bg" data-background="{{ url_for('static', filename='assets/img/footer/footer-bg-1.png') }}"></div>
+                <div class="footer__top black-bg pt-80 pb-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-7">
+                                <div class="footer__widget mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <div class="logo">
+                                            <a href="{{ url_for('index') }}">
+                                                <img src="{{ url_for('static', filename='assets/img/logo/logo.png') }}" alt="logo">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantiu doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis etarchitecto beatae vitae dicta sunt explicabo.</p>
+                                        <div class="footer__info d-sm-flex justify-content-between pr-40">
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-gift-card"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">3560</span>+</h4>
+                                                    <span>Available Jobs</span>
+                                                </div>
+                                            </div>
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-user-circle"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">8563</span>+</h4>
+                                                    <span>Employees</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-7">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-20 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Information</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Looking For A Jobs?</a></li>
+                                                        <li><a href="#">International Jobs</a></li>
+                                                        <li><a href="#">Upload Resume</a></li>
+                                                        <li><a href="#">Setting & Privacy</a></li>
+                                                        <li><a href="#">Career Advice</a></li>
+                                                        <li><a href="#">Freelanc Category</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-10 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Quick Jobs</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Finance & Banking</a></li>
+                                                        <li><a href="#">Business & Consulting</a></li>
+                                                        <li><a href="#">Creative Designer</a></li>
+                                                        <li><a href="#">Web Developer</a></li>
+                                                        <li><a href="#">Digital Marketing</a></li>
+                                                        <li><a href="#">Senior Manager</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-5 col-md-6">
+                                <div class="footer__widget pl-30 mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <h3>Newsletters</h3>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <div class="footer__subscribe">
+                                            <p>Boluptatem accusantiu dolore laudantium totaaperiam</p>
+                                            <div class="footer__subscribe-form">
+                                                <form action="#">
+                                                    <input type="text" placeholder="Enter Your Email">
+                                                    <button type="submit" class="b-btn b-btn-green b-btn-white">Subscribe Now <i class="far fa-arrow-right"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copyright black-bg">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-6 col-lg-6 col-md-7">
+                                <div class="footer__copyright-text">
+                                    <p>© Copyright 2021 <a href="{{ url_for('index') }}">Biden</a> All Rights Reserved.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-5">
+                                <div class="footer__social theme-social f-right">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-behance"></i>
+                                                <i class="fab fa-behance"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-youtube"></i>
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer area end -->
+
+        <!-- JS here -->
+        <script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/slick.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.knob.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.appear.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/ajax-form.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+        
+        <script>
+            // Script pour améliorer la liste déroulante si nécessaire
+            $(document).ready(function() {
+                // Vous pouvez ajouter ici des fonctionnalités supplémentaires
+                // pour la liste déroulante si nécessaire
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1094 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+
+<head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Biden - Job Board HTML5 Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+        <!-- Place favicon.png in the root directory -->
+
+		<!-- CSS here -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+
+        <style>
+            /* Styles pour le profil utilisateur */
+            .user-profile {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                padding: 8px 15px;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .user-profile:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .user-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: black;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .user-name {
+                font-weight: 600;
+                color: white;
+                font-size: 14px;
+            }
+
+            .user-role {
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .profile-dropdown {
+                position: relative;
+            }
+
+            .profile-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: black;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                padding: 10px 0;
+                min-width: 180px;
+                display: none;
+                z-index: 1000;
+            }
+
+            .profile-menu.show {
+                display: block;
+            }
+
+            .profile-menu a {
+                display: block;
+                padding: 8px 15px;
+                color: white;
+                text-decoration: none;
+                transition: background 0.3s ease;
+                font-size: 14px;
+            }
+
+            .profile-menu a:hover {
+                background: #f8f9fa;
+            }
+
+            .profile-menu .logout-btn {
+                color: #ff6b6b;
+                border-top: 1px solid #eee;
+                margin-top: 5px;
+                padding-top: 10px;
+            }
+
+            .profile-menu .logout-btn:hover {
+                background: #ff6b6b;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- preloader -->
+        <div id="preloader">
+            <div class="preloader">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- preloader end  -->
+
+        <!-- header-start -->
+		<header class="header-transparent">
+            <div id="sticky-header" class="main-menu-area menu-01 header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="logo">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/Image2.png') }}" alt="" /></a>
+                            </div>
+                            <div class="logo-black">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/image-2-black.png') }}" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-6 col-sm-6 col-6">
+                            <div class="header-right d-flex justify-content-end justify-content-lg-between align-items-center">
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav id="mobile-menu">
+                                        <ul style="list-style:none; display:flex; gap:30px; padding:0; margin:0;">
+                                            <li>
+                                                <a href="{{ url_for('index') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    Home <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url_for('rh_dashboard') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    Jobs <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url_for('chat') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    HR Assistant  <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url_for('analyze_cv') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    CV Matching <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                             <li>
+                                            <a href="{{ url_for('rh_insights') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                Dashboard <i class="far fa-angle-down"></i>
+                                            </a>
+                                            </li>
+                                            <li>
+                                                <a href="#footer" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    About <i class="scroll-to-footer"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-btn d-none d-lg-block">
+                                    <div class="hedder-button">
+                                        {% if current_user.is_authenticated %}
+                                        <div class="profile-dropdown">
+                                            <div class="user-profile" id="profile-toggle">
+                                                <div class="user-avatar">
+                                                    {{ current_user.name[0] if current_user.name else 'U' }}
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="user-name">{{ current_user.name or 'Utilisateur' }}</span>
+                                                    <span class="user-role">
+                                                        {% if current_user.role == 'rh' %}
+                                                        Recruteur
+                                                        {% else %}
+                                                        Candidat
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                                <i class="far fa-chevron-down"></i>
+                                            </div>
+                                            <div class="profile-menu" id="profile-menu">
+                                                <a href="{{ url_for('profile') }}">
+                                                    <i class="far fa-user"></i> Mon Profil
+                                                </a>
+                                                <a href="{{ url_for('dashboard') }}">
+                                                    <i class="far fa-chart-bar"></i> Tableau de Bord
+                                                </a>
+                                                <a href="{{ url_for('logout') }}" class="logout-btn">
+                                                    <i class="far fa-sign-out"></i> Déconnexion
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <a class="h-btn d-lg-none d-xl-inline-block" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Sign In</a>
+                                        <a class="h-btn h-btn-green" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Log In</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="sidebar__menu d-lg-none">
+                                    <div class="sidebar-toggle-btn" id="sidebar-toggle">
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header-start -->
+
+        <!-- sidebar area start -->
+        <section class="sidebar__area">
+            <div class="sidebar__shape" data-background="{{ url_for('static', filename='assets/img/shape/hexa.png') }}"></div>
+            <div class="sidebar__wrapper">
+                <div class="sidebar__close">
+                    <button class="sidebar__close-btn" id="sidebar__close-btn">
+                        <span><i class="fal fa-times"></i></span>
+                        <span>close</span>
+                    </button>
+                </div>
+                <div class="sidebar__content">
+                    <div class="logo mb-40">
+                        <a href="{{ url_for('index') }}">
+                            <img src="{{ url_for('static', filename='assets/img/logo/logo-white.png') }}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="mobile-menu d-block"></div>
+                    <div class="hedder-button mt-30">
+                        {% if current_user.is_authenticated %}
+                        <div class="user-profile" style="justify-content: center; margin-bottom: 20px; flex-direction: column; text-align: center;">
+                            <div class="user-avatar" style="margin: 0 auto 10px;">
+                                {{ current_user.name[0] if current_user.name else 'U' }}
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" style="color: white; font-size: 16px;">{{ current_user.name or 'Utilisateur' }}</span>
+                                <span class="user-role" style="color: #ccc; font-size: 14px;">
+                                    {% if current_user.role == 'rh' %}
+                                    Recruteur
+                                    {% else %}
+                                    Candidat
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        <a class="h-btn h-btn-2 mb-15" href="{{ url_for('profile') }}"><i class="far fa-user"></i> Mon Profil</a>
+                        <a class="h-btn h-btn-green h-btn-white" href="{{ url_for('logout') }}"><i class="far fa-sign-out"></i> Déconnexion</a>
+                        {% else %}
+                        <a class="h-btn h-btn-2 mb-15" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Sign In</a>
+                        <a class="h-btn h-btn-green h-btn-white" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Log In</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="body-overlay"></div>
+        <!-- sidebar area end -->
+
+        <main>
+
+            <!-- page title area start -->
+            <section class="page__title page__title-height d-flex align-items-center"
+                data-background="{{ url_for('static', filename='assets/img/page-title/page-title-1.jpg') }}">
+                <div class="hero-shape">
+                    <span class="circle"></span>
+                    <span class="circle circle-yellow"></span>
+                    <span class="shape-plus shape-plus-green">+</span>
+                    <span class="shape-plus shape-plus-green shape-plus-2">+</span>
+                    <span class="dot-shape">
+                        <img src="{{ url_for('static', filename='assets/img/shape/dot-shape.png') }}" alt="dot-shape">
+                    </span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="page__title-content text-center mt-80">
+                                <h2>Dashboard</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page title area end -->
+
+            <!-- Chatbot Section -->
+        <!-- HR Dashboard Section -->
+        <section class="dashboard__area pt-80 pb-50" style="background-color:#0f172a;">
+            <div class="container-fluid px-4">
+                
+                <!-- Dashboard Header -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="dashboard-header rounded-3 p-4" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border: 1px solid #334155;">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h2 class="h3 mb-1 text-white fw-bold">📊 HR Analytics Dashboard</h2>
+                                    <p class="text-gray-300 mb-0">Real-time recruitment insights and candidate performance metrics</p>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="text-end">
+                                        <small class="text-gray-400">Last updated: <span id="last-updated">Just now</span></small>
+                                        <button class="btn btn-sm btn-outline-light ms-2" onclick="loadDashboard()" style="border-color: #475569; color: #cbd5e1;">
+                                            <i class="fas fa-sync-alt"></i> Refresh
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Grid -->
+                <div class="row g-4 mb-5" id="metricsRow">
+                    <!-- Metrics will be loaded here -->
+                </div>
+
+                <!-- Charts Section -->
+                <div class="row g-4 mb-5">
+                    <!-- Top Jobs Chart -->
+                    <div class="col-xl-6">
+                        <div class="card h-100" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px;">
+                            <div class="card-header py-3" style="background: #1e293b; border-bottom: 1px solid #334155;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0 fw-semibold text-white">
+                                        <i class="fas fa-trophy text-yellow me-2"></i>
+                                        Top Performing Jobs
+                                    </h5>
+                                    <span class="badge" style="background: #3b82f6;">Most Applications</span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <canvas id="topJobsChart" height="350"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CV Score Distribution -->
+                    <div class="col-xl-6">
+                        <div class="card h-100" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px;">
+                            <div class="card-header py-3" style="background: #1e293b; border-bottom: 1px solid #334155;">
+                                <h5 class="mb-0 fw-semibold text-white">
+                                    <i class="fas fa-chart-pie text-blue-400 me-2"></i>
+                                    Candidate Score Distribution
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <canvas id="scoreChart" height="350"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Quick Stats -->
+                <div class="row g-4">
+                    <!-- Recent Applications -->
+                    <div class="col-xl-8">
+                        <div class="card h-100" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px;">
+                            <div class="card-header py-3" style="background: #1e293b; border-bottom: 1px solid #334155;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0 fw-semibold text-white">
+                                        <i class="fas fa-clock text-cyan-400 me-2"></i>
+                                        Recent Applications
+                                    </h5>
+                                    <a href="{{ url_for('rh_dashboard') }}" class="btn btn-sm" style="background: #3b82f6; border: none; color: white;">
+                                        View All Jobs
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0" style="color: #cbd5e1;">
+                                        <thead style="background: #334155;">
+                                            <tr>
+                                                <th class="ps-4 py-3 text-gray-300">Candidate</th>
+                                                <th class="py-3 text-gray-300">Position</th>
+                                                <th class="py-3 text-gray-300">Date Applied</th>
+                                                <th class="text-center py-3 text-gray-300">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recentApplications" style="border-color: #334155;">
+                                            <!-- Applications will be loaded here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="col-xl-4">
+                        <div class="card h-100" style="background: #1e293b; border: 1px solid #334155; border-radius: 12px;">
+                            <div class="card-header py-3" style="background: #1e293b; border-bottom: 1px solid #334155;">
+                                <h5 class="mb-0 fw-semibold text-white">
+                                    <i class="fas fa-chart-line text-emerald-400 me-2"></i>
+                                    Score Distribution
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="score-stats" id="scoreStats">
+                                    <!-- Score stats will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Styles for Dashboard -->
+        <style>
+            .dashboard-header {
+                background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                color: white;
+                border: 1px solid #334155;
+            }
+            
+            .metric-card {
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                border: 1px solid #334155;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #1e293b;
+            }
+            
+            .metric-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+                border-color: #475569;
+            }
+            
+            .metric-icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+                font-weight: 700;
+                line-height: 1;
+                color: white;
+            }
+            
+            .metric-label {
+                font-size: 0.9rem;
+                color: #94a3b8;
+                font-weight: 500;
+            }
+            
+            .trend-badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+                border-radius: 20px;
+            }
+            
+            .trend-up {
+                background: rgba(34, 197, 94, 0.2);
+                color: #22c55e;
+                border: 1px solid rgba(34, 197, 94, 0.3);
+            }
+            
+            .score-item {
+                padding: 1rem 0;
+                border-bottom: 1px solid #334155;
+            }
+            
+            .score-item:last-child {
+                border-bottom: none;
+            }
+            
+            .score-range {
+                font-weight: 600;
+                color: #e2e8f0;
+            }
+            
+            .score-count {
+                font-weight: 700;
+                color: #60a5fa;
+            }
+            
+            .score-bar {
+                height: 8px;
+                background: #334155;
+                border-radius: 10px;
+                margin-top: 0.5rem;
+                overflow: hidden;
+            }
+            
+            .score-fill {
+                height: 100%;
+                border-radius: 10px;
+            }
+            
+            .score-excellent { background: linear-gradient(90deg, #22c55e, #16a34a); }
+            .score-good { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+            .score-average { background: linear-gradient(90deg, #f59e0b, #d97706); }
+            .score-poor { background: linear-gradient(90deg, #ef4444, #dc2626); }
+            
+            .table th {
+                border-top: none;
+                font-weight: 600;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #94a3b8;
+                background: #334155;
+            }
+            
+            .table td {
+                border-color: #334155;
+                background: #1e293b;
+                color: #cbd5e1;
+                padding: 1rem 0.75rem;
+            }
+            
+            .table-hover tbody tr:hover td {
+                background: #334155;
+                color: white;
+            }
+            
+            .status-badge {
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                font-size: 0.75rem;
+                font-weight: 600;
+            }
+            
+            .status-new { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+            .status-review { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+            .status-screening { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+            
+            .text-gray-300 { color: #d1d5db !important; }
+            .text-gray-400 { color: #9ca3af !important; }
+            .text-white { color: white !important; }
+            .text-yellow { color: #fbbf24 !important; }
+            .text-blue-400 { color: #60a5fa !important; }
+            .text-cyan-400 { color: #22d3ee !important; }
+            .text-emerald-400 { color: #34d399 !important; }
+        </style>
+
+        <!-- Dashboard JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            let topJobsChart, scoreChart;
+
+            function formatNumber(num) {
+                return new Intl.NumberFormat().format(num);
+            }
+
+            function formatDate(dateString) {
+                if (!dateString) return 'N/A';
+                return new Date(dateString).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+
+            async function loadDashboard() {
+                try {
+                    const response = await fetch("/rh/insights_data");
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+
+                    // Update last updated time
+                    document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+
+                    // Load metrics cards
+                    document.getElementById("metricsRow").innerHTML = `
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card metric-card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="metric-icon" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;">
+                                            <i class="fas fa-briefcase"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <div class="metric-value">${formatNumber(data.total_jobs)}</div>
+                                            <div class="metric-label">Active Positions</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="trend-badge trend-up">
+                                            <i class="fas fa-arrow-up me-1"></i>Active
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card metric-card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="metric-icon" style="background: rgba(34, 197, 94, 0.2); color: #4ade80;">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <div class="metric-value">${formatNumber(data.total_apps)}</div>
+                                            <div class="metric-label">Total Applications</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="trend-badge trend-up">
+                                            <i class="fas fa-users me-1"></i>Candidates
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card metric-card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="metric-icon" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <div class="metric-value">${data.avg_score}%</div>
+                                            <div class="metric-label">Avg CV Score</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="trend-badge ${data.avg_score >= 70 ? 'trend-up' : ''}">
+                                            ${data.avg_score >= 70 ? '<i class="fas fa-arrow-up me-1"></i>Good' : 'Needs Review'}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card metric-card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="metric-icon" style="background: rgba(139, 92, 246, 0.2); color: #a78bfa;">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <div class="metric-value">${formatNumber(data.jobs_with_apps)}</div>
+                                            <div class="metric-label">Jobs with Applications</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="trend-badge trend-up">
+                                            ${Math.round((data.jobs_with_apps / data.total_jobs) * 100)}% Active
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Top Jobs Chart
+                    const ctx1 = document.getElementById("topJobsChart");
+                    if (topJobsChart) topJobsChart.destroy();
+                    
+                    if (data.top_jobs && data.top_jobs.length > 0) {
+                        topJobsChart = new Chart(ctx1, {
+                            type: 'bar',
+                            data: {
+                                labels: data.top_jobs.map(j => {
+                                    const title = j.title || 'Untitled';
+                                    return title.length > 25 ? title.substring(0, 25) + '...' : title;
+                                }),
+                                datasets: [{
+                                    label: 'Applications',
+                                    data: data.top_jobs.map(j => j.count || 0),
+                                    backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                                    borderColor: 'rgba(59, 130, 246, 1)',
+                                    borderWidth: 2,
+                                    borderRadius: 8,
+                                    borderSkipped: false,
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                        titleColor: 'white',
+                                        bodyColor: 'white',
+                                        borderColor: 'rgba(59, 130, 246, 1)',
+                                        borderWidth: 1,
+                                        displayColors: false,
+                                        callbacks: {
+                                            title: function(tooltipItems) {
+                                                const index = tooltipItems[0].dataIndex;
+                                                return data.top_jobs[index].title || 'Untitled';
+                                            },
+                                            label: function(context) {
+                                                return `Applications: ${context.parsed.y}`;
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.1)'
+                                        },
+                                        ticks: {
+                                            color: '#94a3b8',
+                                            precision: 0
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            color: '#94a3b8',
+                                            maxRotation: 45
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // Score Distribution Chart
+                    const ctx2 = document.getElementById("scoreChart");
+                    if (scoreChart) scoreChart.destroy();
+                    
+                    if (data.score_dist && Object.keys(data.score_dist).length > 0) {
+                        const scoreData = [
+                            data.score_dist['80-100'] || 0,
+                            data.score_dist['60-79'] || 0,
+                            data.score_dist['40-59'] || 0,
+                            data.score_dist['0-39'] || 0
+                        ];
+
+                        scoreChart = new Chart(ctx2, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Excellent (80-100%)', 'Good (60-79%)', 'Average (40-59%)', 'Needs Improvement (0-39%)'],
+                                datasets: [{
+                                    data: scoreData,
+                                    backgroundColor: [
+                                        'rgba(34, 197, 94, 0.8)',
+                                        'rgba(59, 130, 246, 0.8)',
+                                        'rgba(245, 158, 11, 0.8)',
+                                        'rgba(239, 68, 68, 0.8)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(34, 197, 94, 1)',
+                                        'rgba(59, 130, 246, 1)',
+                                        'rgba(245, 158, 11, 1)',
+                                        'rgba(239, 68, 68, 1)'
+                                    ],
+                                    borderWidth: 2,
+                                    borderAlign: 'inner'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '60%',
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 20,
+                                            usePointStyle: true,
+                                            color: '#cbd5e1',
+                                            font: {
+                                                size: 12
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    // Recent Applications Table
+                    const recentApps = data.timeline && data.timeline.length > 0
+                        ? data.timeline.map(item => `
+                            <tr>
+                                <td class="ps-4 fw-semibold">${item.user || 'Unknown Candidate'}</td>
+                                <td>${item.job || 'Unknown Position'}</td>
+                                <td class="text-gray-400">${formatDate(item.date)}</td>
+                                <td class="text-center">
+                                    <span class="status-badge status-new">New</span>
+                                </td>
+                            </tr>
+                        `).join('')
+                        : `
+                            <tr>
+                                <td colspan="4" class="text-center text-gray-400 py-5">
+                                    <i class="fas fa-inbox fa-2x mb-3 d-block"></i>
+                                    No recent applications
+                                </td>
+                            </tr>
+                        `;
+
+                    document.getElementById("recentApplications").innerHTML = recentApps;
+
+                    // Score Distribution Stats
+                    if (data.score_dist) {
+                        const totalScores = Object.values(data.score_dist).reduce((a, b) => a + b, 0);
+                        document.getElementById("scoreStats").innerHTML = `
+                            <div class="score-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="score-range">Excellent (80-100%)</span>
+                                    <span class="score-count">${data.score_dist['80-100'] || 0}</span>
+                                </div>
+                                <div class="score-bar">
+                                    <div class="score-fill score-excellent" style="width: ${totalScores > 0 ? ((data.score_dist['80-100'] || 0) / totalScores * 100) : 0}%"></div>
+                                </div>
+                            </div>
+                            <div class="score-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="score-range">Good (60-79%)</span>
+                                    <span class="score-count">${data.score_dist['60-79'] || 0}</span>
+                                </div>
+                                <div class="score-bar">
+                                    <div class="score-fill score-good" style="width: ${totalScores > 0 ? ((data.score_dist['60-79'] || 0) / totalScores * 100) : 0}%"></div>
+                                </div>
+                            </div>
+                            <div class="score-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="score-range">Average (40-59%)</span>
+                                    <span class="score-count">${data.score_dist['40-59'] || 0}</span>
+                                </div>
+                                <div class="score-bar">
+                                    <div class="score-fill score-average" style="width: ${totalScores > 0 ? ((data.score_dist['40-59'] || 0) / totalScores * 100) : 0}%"></div>
+                                </div>
+                            </div>
+                            <div class="score-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="score-range">Needs Improvement (0-39%)</span>
+                                    <span class="score-count">${data.score_dist['0-39'] || 0}</span>
+                                </div>
+                                <div class="score-bar">
+                                    <div class="score-fill score-poor" style="width: ${totalScores > 0 ? ((data.score_dist['0-39'] || 0) / totalScores * 100) : 0}%"></div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                } catch (err) {
+                    console.error("Dashboard loading error:", err);
+                    document.getElementById("metricsRow").innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5;">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Failed to load dashboard data. Please try again.
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Initial load
+            loadDashboard();
+
+            // Auto-refresh every 2 minutes
+            setInterval(loadDashboard, 120000);
+        </script>
+
+
+        </main>
+
+        <!-- footer area start -->
+        <footer id="footer">
+            <div class="footer__area">
+                <div class="footer__bg" data-background="{{ url_for('static', filename='assets/img/footer/footer-bg-1.png') }}"></div>
+                <div class="footer__top black-bg pt-80 pb-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-7">
+                                <div class="footer__widget mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <div class="logo">
+                                            <a href="{{ url_for('index') }}">
+                                                <img src="{{ url_for('static', filename='assets/img/logo/logo.png') }}" alt="logo">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantiu doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis etarchitecto beatae vitae dicta sunt explicabo.</p>
+                                        <div class="footer__info d-sm-flex justify-content-between pr-40">
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-gift-card"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">3560</span>+</h4>
+                                                    <span>Available Jobs</span>
+                                                </div>
+                                            </div>
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-user-circle"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">8563</span>+</h4>
+                                                    <span>Employees</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-7">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-20 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Information</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Looking For A Jobs?</a></li>
+                                                        <li><a href="#">International Jobs</a></li>
+                                                        <li><a href="#">Upload Resume</a></li>
+                                                        <li><a href="#">Setting & Privacy</a></li>
+                                                        <li><a href="#">Career Advice</a></li>
+                                                        <li><a href="#">Freelanc Category</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-10 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Quick Jobs</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Finance & Banking</a></li>
+                                                        <li><a href="#">Business & Consulting</a></li>
+                                                        <li><a href="#">Creative Designer</a></li>
+                                                        <li><a href="#">Web Developer</a></li>
+                                                        <li><a href="#">Digital Marketing</a></li>
+                                                        <li><a href="#">Senior Manager</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-5 col-md-6">
+                                <div class="footer__widget pl-30 mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <h3>Newsletters</h3>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <div class="footer__subscribe">
+                                            <p>Boluptatem accusantiu dolore laudantium totaaperiam</p>
+                                            <div class="footer__subscribe-form">
+                                                <form action="#">
+                                                    <input type="text" placeholder="Enter Your Email">
+                                                    <button type="submit" class="b-btn b-btn-green b-btn-white">Subscribe Now <i class="far fa-arrow-right"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copyright black-bg">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-6 col-lg-6 col-md-7">
+                                <div class="footer__copyright-text">
+                                    <p>© Copyright 2021 <a href="{{ url_for('index') }}">Biden</a> All Rights Reserved.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-5">
+                                <div class="footer__social theme-social f-right">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-behance"></i>
+                                                <i class="fab fa-behance"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-youtube"></i>
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer area end -->
+
+        <!-- JS here -->
+        <script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/slick.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.knob.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.appear.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/ajax-form.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+        
+        <script>
+            // Script pour le menu déroulant du profil
+            $(document).ready(function() {
+                // Gestion du menu déroulant du profil
+                $('#profile-toggle').click(function(e) {
+                    e.stopPropagation();
+                    $('#profile-menu').toggleClass('show');
+                });
+
+                // Fermer le menu déroulant quand on clique ailleurs
+                $(document).click(function() {
+                    $('#profile-menu').removeClass('show');
+                });
+
+                // Empêcher la fermeture quand on clique dans le menu
+                $('#profile-menu').click(function(e) {
+                    e.stopPropagation();
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,974 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Biden - Job Board HTML5 Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+        <!-- Place favicon.png in the root directory -->
+
+		<!-- CSS here -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+
+        <style>
+            /* Styles pour le profil utilisateur */
+            .user-profile {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                padding: 8px 15px;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .user-profile:hover {
+                background-color: black;
+            }
+
+            .user-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: black;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .user-name {
+                font-weight: 600;
+                color: white;
+                font-size: 14px;
+            }
+
+            .user-role {
+                font-size: 12px;
+                color: white;
+            }
+
+            .profile-dropdown {
+                position: relative;
+            }
+
+            .profile-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: black;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                padding: 10px 0;
+                min-width: 180px;
+                display: none;
+                z-index: 1000;
+            }
+
+            .profile-menu.show {
+                display: block;
+            }
+
+            .profile-menu a {
+                display: block;
+                padding: 8px 15px;
+                color: white;
+                text-decoration: none;
+                transition: background 0.3s ease;
+                font-size: 14px;
+            }
+
+            .profile-menu a:hover {
+                background: #f8f9fa;
+            }
+
+            .profile-menu .logout-btn {
+                color: #ff6b6b;
+                border-top: 1px solid #eee;
+                margin-top: 5px;
+                padding-top: 10px;
+            }
+
+            .profile-menu .logout-btn:hover {
+                background: #ff6b6b;
+                color: white;
+            }
+
+            .applied-link {
+                color: #28a745;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            .applied-link:hover {
+                color: #28a745;
+            }
+
+            /* Styles pour la pagination */
+            .pagination {
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+                gap: 8px;
+            }
+
+            .page-item {
+                margin: 0 2px;
+            }
+
+            .page-link {
+                padding: 8px 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                color: #333;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .page-link:hover {
+                background-color: #f8f9fa;
+                border-color: #ddd;
+            }
+
+            .page-item.active .page-link {
+                background-color: #078f27;
+                border-color: #078f27;
+                color: white;
+            }
+
+            .page-item.disabled .page-link {
+                color: #6c757d;
+                pointer-events: none;
+                background-color: #fff;
+                border-color: #ddd;
+            }
+
+            .pagination-info {
+                text-align: center;
+                margin-top: 15px;
+                color: #666;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- preloader -->
+        <div id="preloader">
+            <div class="preloader">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- preloader end  -->
+
+        <!-- header-start -->
+		<header class="header-transparent">
+            <div id="sticky-header" class="main-menu-area menu-01 header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="logo">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/Image2.png') }}" alt="" /></a>
+                            </div>
+                            <div class="logo-black">
+                                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/img/logo/image-2-black.png') }}" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-6 col-sm-6 col-6">
+                            <div class="header-right d-flex justify-content-end justify-content-lg-between align-items-center">
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav id="mobile-menu">
+                                        <ul style="list-style:none; display:flex; gap:30px; padding:0; margin:0;">
+                                            <li class="active">
+                                                <a href="{{ url_for('candidat_dashboard') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    Home <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url_for('candidat_dashboard') }}" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    Jobs <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="about.html" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    CV Analysis  <i class="far fa-angle-down"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#footer" style="font-size:22px; font-weight:600; color:rgb(255, 255, 255); text-decoration:none;">
+                                                    About <i class="scroll-to-footer"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-btn d-none d-lg-block">
+                                    <div class="hedder-button">
+                                        {% if current_user.is_authenticated %}
+                                        <div class="profile-dropdown">
+                                            <div class="user-profile" id="profile-toggle">
+                                                <div class="user-avatar">
+                                                    {{ current_user.name[0] if current_user.name else 'U' }}
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="user-name">{{ current_user.name or 'Utilisateur' }}</span>
+                                                    <span class="user-role">
+                                                        {% if current_user.role == 'rh' %}
+                                                        Recruteur
+                                                        {% else %}
+                                                        Candidat
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                                <i class="far fa-chevron-down"></i>
+                                            </div>
+                                            <div class="profile-menu" id="profile-menu">
+                                                <a href="{{ url_for('profile') }}">
+                                                    <i class="far fa-user"></i> Mon Profil
+                                                </a>
+                                                <a href="{{ url_for('dashboard') }}">
+                                                    <i class="far fa-chart-bar"></i> Tableau de Bord
+                                                </a>
+                                                <a href="{{ url_for('logout') }}" class="logout-btn">
+                                                    <i class="far fa-sign-out"></i> Déconnexion
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <a class="h-btn d-lg-none d-xl-inline-block" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Sign In</a>
+                                        <a class="h-btn h-btn-green" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Log In</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="sidebar__menu d-lg-none">
+                                    <div class="sidebar-toggle-btn" id="sidebar-toggle">
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header-start -->
+
+        <!-- sidebar area start -->
+        <section class="sidebar__area">
+            <div class="sidebar__shape" data-background="{{ url_for('static', filename='assets/img/shape/hexa.png') }}"></div>
+            <div class="sidebar__wrapper">
+                <div class="sidebar__close">
+                    <button class="sidebar__close-btn" id="sidebar__close-btn">
+                        <span><i class="fal fa-times"></i></span>
+                        <span>close</span>
+                    </button>
+                </div>
+                <div class="sidebar__content">
+                    <div class="logo mb-40">
+                        <a href="{{ url_for('index') }}">
+                            <img src="{{ url_for('static', filename='assets/img/logo/logo-white.png') }}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="mobile-menu d-block"></div>
+                    <div class="hedder-button mt-30">
+                        {% if current_user.is_authenticated %}
+                        <div class="user-profile" style="justify-content: center; margin-bottom: 20px; flex-direction: column; text-align: center;">
+                            <div class="user-avatar" style="margin: 0 auto 10px;">
+                                {{ current_user.name[0] if current_user.name else 'U' }}
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" style="color: white; font-size: 16px;">{{ current_user.name or 'Utilisateur' }}</span>
+                                <span class="user-role" style="color: #ccc; font-size: 14px;">
+                                    {% if current_user.role == 'rh' %}
+                                    Recruteur
+                                    {% else %}
+                                    Candidat
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        <a class="h-btn h-btn-2 mb-15" href="{{ url_for('profile') }}"><i class="far fa-user"></i> Mon Profil</a>
+                        <a class="h-btn h-btn-green h-btn-white" href="{{ url_for('logout') }}"><i class="far fa-sign-out"></i> Déconnexion</a>
+                        {% else %}
+                        <a class="h-btn h-btn-2 mb-15" href="{{ url_for('register') }}"><i class="far fa-user-circle"></i> Sign In</a>
+                        <a class="h-btn h-btn-green h-btn-white" href="{{ url_for('login') }}"><i class="far fa-lock-alt"></i> Log In</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="body-overlay"></div>
+        <!-- sidebar area end -->
+
+        <main>
+
+            <!-- page title area start -->
+            <section class="page__title page__title-height d-flex align-items-center"
+                data-background="{{ url_for('static', filename='assets/img/page-title/page-title-1.jpg') }}">
+                <div class="hero-shape">
+                    <span class="circle"></span>
+                    <span class="circle circle-yellow"></span>
+                    <span class="shape-plus shape-plus-green">+</span>
+                    <span class="shape-plus shape-plus-green shape-plus-2">+</span>
+                    <span class="dot-shape">
+                        <img src="{{ url_for('static', filename='assets/img/shape/dot-shape.png') }}" alt="dot-shape">
+                    </span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="page__title-content text-center mt-80">
+                                <h2>Job Recommendation</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Job Recommendation</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page title area end -->
+
+         <!-- CV Analysis Section -->
+<div class="job-area pt-80 pb-50">
+    <div class="container">
+        <div class="cv-analysis-container">
+            <div class="cv-analysis-header">
+                <h1>AI-Powered CV Analysis</h1>
+                <p>Upload your CV and get instant insights about your skills, education, and career recommendations powered by advanced AI technology.</p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data" id="cvForm">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="far fa-file-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        <h3>Upload Your CV</h3>
+                        <p>Drag & drop your file here or click to browse</p>
+                        <label for="fileInput" class="file-label">
+                            <i class="far fa-cloud-upload"></i> Choose File
+                        </label>
+                        <input type="file" name="file" id="fileInput" class="file-input" accept=".pdf,.docx,.jpg,.jpeg,.png" required>
+                        <div class="supported-formats">
+                            Supported formats: PDF, DOCX, JPG, PNG (Max: 16MB)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="file-preview" id="filePreview">
+                    <div class="d-flex align-items-center">
+                        <i class="far fa-file-pdf text-danger me-3" style="font-size: 2rem;"></i>
+                        <div>
+                            <h6 id="fileName" class="mb-1">File Name</h6>
+                            <small id="fileSize" class="text-muted">File Size</small>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" onclick="clearFile()">
+                            <i class="far fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p>Analyzing your CV... This may take a few moments.</p>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="far fa-analytics me-2"></i> Analyze CV
+                </button>
+            </form>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="far fa-brain"></i>
+                    </div>
+                    <h4>AI-Powered Analysis</h4>
+                    <p>Advanced machine learning algorithms extract key information from your CV with high accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="far fa-chart-network"></i>
+                    </div>
+                    <h4>Skill Extraction</h4>
+                    <p>Automatically identify and categorize your technical skills and competencies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="far fa-graduation-cap"></i>
+                    </div>
+                    <h4>Education Detection</h4>
+                    <p>Recognize academic qualifications, degrees, and educational background</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="far fa-lightbulb"></i>
+                    </div>
+                    <h4>Career Recommendations</h4>
+                    <p>Get personalized job suggestions and skill development advice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhanced CV Analysis Container */
+    .cv-analysis-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        padding: 50px;
+        margin: 40px auto;
+        max-width: 800px;
+        border: 1px solid #e8f4ff;
+    }
+
+    .cv-analysis-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .cv-analysis-header h1 {
+        color: #2c3e50;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: #000000;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .cv-analysis-header p {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .upload-area {
+        border: 3px dashed #e0e0e0;
+        border-radius: 15px;
+        padding: 60px 40px;
+        text-align: center;
+        transition: all 0.3s ease;
+        background: #fafbfc;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+
+    .upload-area:hover {
+        border-color: #d57a2a;
+        background: #f8f9ff;
+    }
+
+    .upload-area.dragover {
+        border-color: #d57a2a;
+        background: #f0f4ff;
+        transform: scale(1.02);
+    }
+
+    .upload-icon {
+        font-size: 4rem;
+        color: #d57a2a;
+        margin-bottom: 20px;
+    }
+
+    .upload-text h3 {
+        color: #d57a2a;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .upload-text p {
+        color: #7f8c8d;
+        margin-bottom: 20px;
+    }
+
+    .file-input {
+        display: none;
+    }
+
+    .file-label {
+        display: inline-block;
+        background: #d57a2a;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .file-label:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .supported-formats {
+        margin-top: 20px;
+        color: #95a5a6;
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        color: white;
+        border: none;
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+    }
+
+    .submit-btn:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 50px;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f1f3f4;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        background: #000000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 1.8rem;
+    }
+
+    .feature-card h4 {
+        color: #2c3e50;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .feature-card p {
+        color: #7f8c8d;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* File Preview */
+    .file-preview {
+        display: none;
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+        border-left: 4px solid #667eea;
+    }
+
+    .file-preview.show {
+        display: block;
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Loading Animation */
+    .loading-spinner {
+        display: none;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #667eea;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .cv-analysis-container {
+            padding: 30px 20px;
+            margin: 20px;
+        }
+
+        .cv-analysis-header h1 {
+            font-size: 2rem;
+        }
+
+        .upload-area {
+            padding: 40px 20px;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const filePreview = document.getElementById('filePreview');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const cvForm = document.getElementById('cvForm');
+
+        // File input change event
+        fileInput.addEventListener('change', function(e) {
+            handleFileSelection(e.target.files[0]);
+        });
+
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function() {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelection(files[0]);
+                fileInput.files = files;
+            }
+        });
+
+        // Click on upload area to trigger file input
+        uploadArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        // Form submission
+        cvForm.addEventListener('submit', function(e) {
+            if (!fileInput.files[0]) {
+                e.preventDefault();
+                alert('Please select a file to upload.');
+                return;
+            }
+            
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="far fa-spinner fa-spin me-2"></i> Analyzing...';
+        });
+
+        function handleFileSelection(file) {
+            if (file) {
+                // Validate file type
+                const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/jpg', 'image/png'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Please select a valid file type (PDF, DOCX, JPG, PNG).');
+                    return;
+                }
+
+                // Validate file size (16MB)
+                if (file.size > 16 * 1024 * 1024) {
+                    alert('File size must be less than 16MB.');
+                    return;
+                }
+
+                // Update file preview
+                fileName.textContent = file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                filePreview.classList.add('show');
+                
+                // Update icon based on file type
+                const fileIcon = filePreview.querySelector('i');
+                if (file.type === 'application/pdf') {
+                    fileIcon.className = 'far fa-file-pdf text-danger me-3';
+                } else if (file.type.includes('wordprocessingml')) {
+                    fileIcon.className = 'far fa-file-word text-primary me-3';
+                } else if (file.type.includes('image')) {
+                    fileIcon.className = 'far fa-file-image text-success me-3';
+                } else {
+                    fileIcon.className = 'far fa-file-alt text-secondary me-3';
+                }
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        window.clearFile = function() {
+            fileInput.value = '';
+            filePreview.classList.remove('show');
+        };
+    });
+</script>
+        </main>
+
+        <!-- footer area start -->
+        <footer id="footer">
+            <div class="footer__area">
+                <div class="footer__bg" data-background="{{ url_for('static', filename='assets/img/footer/footer-bg-1.png') }}"></div>
+                <div class="footer__top black-bg pt-80 pb-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-7">
+                                <div class="footer__widget mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <div class="logo">
+                                            <a href="{{ url_for('index') }}">
+                                                <img src="{{ url_for('static', filename='assets/img/logo/logo.png') }}" alt="logo">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantiu doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis etarchitecto beatae vitae dicta sunt explicabo.</p>
+                                        <div class="footer__info d-sm-flex justify-content-between pr-40">
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-gift-card"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">3560</span>+</h4>
+                                                    <span>Available Jobs</span>
+                                                </div>
+                                            </div>
+                                            <div class="footer__info-item d-flex align-items-center mb-30">
+                                                <div class="icon mr-15">
+                                                    <i class="fal fa-user-circle"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h4><span class="counter">8563</span>+</h4>
+                                                    <span>Employees</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-7">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-20 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Information</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Looking For A Jobs?</a></li>
+                                                        <li><a href="#">International Jobs</a></li>
+                                                        <li><a href="#">Upload Resume</a></li>
+                                                        <li><a href="#">Setting & Privacy</a></li>
+                                                        <li><a href="#">Career Advice</a></li>
+                                                        <li><a href="#">Freelanc Category</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="footer__widget pl-10 mb-50">
+                                            <div class="footer__widget-title mb-20">
+                                                <h3>Quick Jobs</h3>
+                                            </div>
+                                            <div class="footer__widget-content">
+                                                <div class="footer__link">
+                                                    <ul>
+                                                        <li><a href="#">Finance & Banking</a></li>
+                                                        <li><a href="#">Business & Consulting</a></li>
+                                                        <li><a href="#">Creative Designer</a></li>
+                                                        <li><a href="#">Web Developer</a></li>
+                                                        <li><a href="#">Digital Marketing</a></li>
+                                                        <li><a href="#">Senior Manager</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-5 col-md-6">
+                                <div class="footer__widget pl-30 mb-50">
+                                    <div class="footer__widget-title mb-20">
+                                        <h3>Newsletters</h3>
+                                    </div>
+                                    <div class="footer__widget-content">
+                                        <div class="footer__subscribe">
+                                            <p>Boluptatem accusantiu dolore laudantium totaaperiam</p>
+                                            <div class="footer__subscribe-form">
+                                                <form action="#">
+                                                    <input type="text" placeholder="Enter Your Email">
+                                                    <button type="submit" class="b-btn b-btn-green b-btn-white">Subscribe Now <i class="far fa-arrow-right"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copyright black-bg">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-6 col-lg-6 col-md-7">
+                                <div class="footer__copyright-text">
+                                    <p>© Copyright 2021 <a href="{{ url_for('index') }}">Biden</a> All Rights Reserved.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-5">
+                                <div class="footer__social theme-social f-right">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-behance"></i>
+                                                <i class="fab fa-behance"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-youtube"></i>
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer area end -->
+
+        <!-- JS here -->
+        <script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/vendor/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/slick.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.knob.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.appear.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/ajax-form.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+        
+        <script>
+            // Script pour le menu déroulant du profil
+            $(document).ready(function() {
+                // Gestion du menu déroulant du profil
+                $('#profile-toggle').click(function(e) {
+                    e.stopPropagation();
+                    $('#profile-menu').toggleClass('show');
+                });
+
+                // Fermer le menu déroulant quand on clique ailleurs
+                $(document).click(function() {
+                    $('#profile-menu').removeClass('show');
+                });
+
+                // Empêcher la fermeture quand on clique dans le menu
+                $('#profile-menu').click(function(e) {
+                    e.stopPropagation();
+                });
+            });
+        </script>
+    </body>
+</html>
