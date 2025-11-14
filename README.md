@@ -30,7 +30,7 @@ The **AI-Driven Strategic HR Platform** is an AI-powered system designed to opti
 - Ensure fairness and consistency in candidate evaluation.
 - Digitize HR workflows for efficiency and transparency.
 
----
+----
 
 This platform demonstrates how AI can **empower recruiters**, streamline HR processes, and create **data-driven, fair, and efficient recruitment solutions**.
 
